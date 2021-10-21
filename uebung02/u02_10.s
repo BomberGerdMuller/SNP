@@ -1,5 +1,5 @@
 /************************************************************************************************/
-/* program: 02/10/source.s 									*/
+/* program: u02_10.s	 									*/
 /* description: Pushes three numbers to stack and pops two numbers from the stack.		*/
 /*		Then it loads the value where the Stack-Pointer is pointing to, to R0.		*/
 /* depends on: - 										*/

@@ -1,6 +1,6 @@
 /************************************************************************************************/
-/* program: 02/09/source.s									*/
-/* description: Adds 432 and 177 								*/
+/* program: u02_09.s										*/
+/* description: Adds 432 and 177. 								*/
 /* depends on: -										*/
 /************************************************************************************************/
 
@@ -16,7 +16,7 @@ _start:
 	AND	R0, R0, #0xF0000000		@ Das CPSR enthaelt Status zum momentanen Program, mit einer Bitmaske werden nur die Flags
 						@ ausgewaehlt, denn da steckt die info ob etwas negativ sein koennte.
 						@ Hiernach ist R0 -> 0x0, wie erwartet
-	SUBS	R0, R1, R2
+	SUB	R0, R1, R2
 	MRS	R0, CPSR
 	AND	R0, R0, #0xF0000000		@ Hiernach ist R0 -> 0x80000000, sprich: die Flag für Negative wurde auf 1 gesetzt
 						@ Die information, dass das ergebnis negativ ist liegt also hier 
