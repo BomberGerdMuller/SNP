@@ -6,20 +6,18 @@
 
 	.global	_start
 _start:
-	MOV	R2, #543
-	MOV	R1, #432
+	MOV	R1, #543
+	MOV	R2, #432
 /*
-	Nach Beiden Rechnungen, kam jeweils 111 heraus. Das ein Wert negativ ist, liegt also nicht
-	"direkt" im Register, sondern an einer anderen Stelle
+	Bei SUB R0, R1, R2 kommt 111 --> 0x6F heraus
+	Bei SUB R0, R2, R1 kommt -111 --> 0xFFFFFF91
+	Also das 2er Komplement von 111
 */
-	MRS	R0, CPSR			@ Mit MRS (Move Register from Status) kann ein Status in ein Register geschrieben werden
-	AND	R0, R0, #0xF0000000		@ Das CPSR enthaelt Status zum momentanen Program, mit einer Bitmaske werden nur die Flags
-						@ ausgewaehlt, denn da steckt die info ob etwas negativ sein koennte.
-						@ Hiernach ist R0 -> 0x0, wie erwartet
-	SUB	R0, R1, R2
-	MRS	R0, CPSR
-	AND	R0, R0, #0xF0000000		@ Hiernach ist R0 -> 0x80000000, sprich: die Flag für Negative wurde auf 1 gesetzt
-						@ Die information, dass das ergebnis negativ ist liegt also hier 
+	SUB R0, R2, R1 @ => 0xFFFFFF91
+	/* Test für den CPSR
+	SUBS R0, R2, R1 @ => 0xFFFFFF91
+	MRS	R1, CPSR @ CPSR => 10000000000000000000000000010000 <-- Bit 31 ist 1 also wurde das Negative Flag gesetzt
+	 */
 _exit:
 	MOV	R7, #1
 	SWI	0

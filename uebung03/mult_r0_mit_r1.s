@@ -1,7 +1,7 @@
 /************************************************************************************************/
-/* program: mult_r0_mit_r1.s
-/* description: Multiplies 2 Numbers (73, 25) and Moves the output to 
-/* depends on: - 
+/* program: mult_r0_mit_r1.s									*/
+/* description: Multiplies 2 Numbers (73, 25) and Moves the output to 				*/
+/* depends on: - 										*/
 /************************************************************************************************/
 
 	.global	mult_r0_mit_r1

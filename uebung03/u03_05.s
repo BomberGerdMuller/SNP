@@ -1,8 +1,8 @@
-/************************************************************************************************/
-/* program: u03_05.s
-/* description: Solves the following problem: 73x25 , 857/17 with the help of the library lib_math.s
-/* depends on: lib_math.s 
-/************************************************************************************************/
+/********************************************************************************************************/
+/* program: u03_05.s											*/
+/* description: Solves the following problem: 73x25 , 857/17 with the help of the library lib_math.s	*/
+/* depends on: lib_math.s 										*/
+/********************************************************************************************************/
 
 .global _start
 
@@ -17,6 +17,12 @@ _start:
 	MOV	R1, #17
 	BL	div_r0_durch_r1
 	POP	{R2}
+
+	/*
+	R0 := Ergebnis Division (857/17)
+	R1 := Rest Division
+	R2 := Ergebnis Multiplikation (73*25)
+	*/
 
 _exit:
 	MOV	R7, #1
