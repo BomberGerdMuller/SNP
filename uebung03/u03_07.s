@@ -13,22 +13,36 @@ PUSH {R1}
 BL getNumber @ => R1 = 2 
 POP {R0} @ => R0 = 10
 /* Ab jetzt ist R0 die erste Zahl und R1 die zweite */
-MOV R7, R0
-MOV R8, R1
+MOV R6, R0
+MOV R7, R1
 BL mult_r0_mit_r1 @ => R0 = 10 * 2 = 20 
 PUSH {R0}
-MOV R6, R0
-MOV R0, R7
-MOV R1, R8
+MOV R0, R6
+MOV R1, R7
 BL div_r0_durch_r1
 PUSH {R0}
 PUSH {R1}
 LDR R0, =string
 
-POP {R6}
-POP {R5}
+/* Temp */
 POP {R4}
+POP {R5}
+
+/* Mult */
+MOV R1, R6 
+MOV R2, R7
+POP {R3}
+
+/* Div */
+PUSH {R4}
+PUSH {R5}
+PUSH {R7}
+PUSH {R6}
 BL printf
+POP {R1}
+POP {R1}
+POP {R1}
+POP {R1}
 POP {PC} @ restore PC
 
 getNumber:
@@ -56,4 +70,4 @@ messagein: .asciz "Enter your number: "
 scanformat: .asciz "%d"
 messageout: .asciz "Your number was %d\n"
 string:
-	.asciz "Results are:\nd*d: %d\nd/d: %d R%d\n"
+	.asciz "Results are:\n%d*%d: %d\n%d/%d: %d R%d\n"
