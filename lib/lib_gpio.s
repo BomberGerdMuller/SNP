@@ -1,6 +1,6 @@
 .syntax unified
 .cpu cortex-m3
-.thumb
+.arm
 
 .word 0x20000400
 .word 0x080000ed
