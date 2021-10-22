@@ -1,27 +1,12 @@
-.syntax unified
-.cpu cortex-m3
-.thumb
-
-.word 0x20000400
-.word 0x080000ed
-.space 0xe4
 .global _start
 _start:
-ldr r1, =0x40021018		@ 0x40021018 Adresse APB2ENR
-ldr r0, [r1]
-orr r0, r0, #0b100			@ 04 Wert um Port A zu aktivieren
-str r0, [r1]			@ Set IOPAEN bit in RCC_APB2ENR to 1 to enable GPIOA
+	MOV R0, #0x0
+	BL port_open
+	BL gpio_init
+	BL gpio_set
+	@BP
 
-ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
-ldr r0, [r1]
-and r0, #0xfffffff0
-orr r0, #0b0010			@ CNF:MODE Bits für PA8 als Ausgang Push_Pull
-str r0, [r1]			@ Set CNF8:MODE8 in GPIOA_CRH
 
-ldr r1, =0x40010810		@ ZZZZZZZZ Adresse BSRR Port A
-MOV r2, #1
-MOv R0, r2, LSL #24
-str r0, [r1]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high
-loop:
-	b	loop
-
+_exit:
+	MOV R7, #0x1
+	SWI 0x0
