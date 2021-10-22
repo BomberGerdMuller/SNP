@@ -40,7 +40,7 @@ ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
 loop:
 SUB	R0,	r0, #1
 CMP	R0, #0
-ITEE GE
+IT NE
 ADDGE	r1,	r1,	#256
 BGE		loop
 ldr r0, [r1]
