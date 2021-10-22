@@ -38,8 +38,8 @@ PUSH {LR}
 @ PUSH {R1}
 ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
 loop:
-SUBS	R0, #1
-ADDGE	r1,	#0x800
+SUBS	R0,	r0, #1
+ADDGE	r1,	r1,	#0x800
 BGE		loop
 ldr r0, [r1]
 and r0, #0xfffffff0
