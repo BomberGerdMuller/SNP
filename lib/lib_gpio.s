@@ -42,7 +42,7 @@ loop:
 SUB	R0,	r0, #1
 CMP	R0, #0
 IT GE
-ADDGE	r1,	r1,	#256
+ADDGE	r1,	r1,	#128
 BGE		loop
 ldr r0, [r1]
 and r0, #0xfffffff0
