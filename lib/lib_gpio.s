@@ -40,7 +40,7 @@ Input:	R0 -> Port (A=0 ... G=7)
  */
 gpio_init:
 PUSH {LR}
-PUSH {R2}
+/*PUSH {R2}
 PUSH {R1}
 BL get_point_register
 POP {R2}
@@ -64,13 +64,13 @@ MOV R6, #0b0010
 MOV R6, R6, LSL R2
 IT GT
 ORRGT R1, R1, R6
-str r1, [R0]
-/*ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
+str r1, [R0]*/
+ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
 ldr r0, [r1]
 and r0, #0xfffffff0
 orr r0, #0b0010			@ CNF:MODE Bits für PA8 als Ausgang Push_Pull
 str r0, [r1]			@ Set CNF8:MODE8 in GPIOA_CRH
-*/
+
 POP {PC}
 
 
@@ -91,7 +91,7 @@ POP {PC}
 
 gpio_set:
 PUSH {LR}
-/*BL get_point_register
+BL get_point_register
 ADD R0, R0, 0x10
 LDR R1, [R0]
 POP {R4}
@@ -104,13 +104,13 @@ ORR R1, R1, R4
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
 @ MOV r2, #16
 @LSR r0, r0, #16
-str r1, [r0]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high*/
-ldr r1, =0x40010810		@ ZZZZZZZZ Adresse BSRR Port A
+str r1, [r0]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high
+/*ldr r1, =0x40010810		@ ZZZZZZZZ Adresse BSRR Port A
 MOV r2, #1
 MOv R0, r2, LSL #8
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
 @ MOV r2, #16
 @LSR r0, r0, #16
 str r0, [r1]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high
-
+*/
 POP {PC}
