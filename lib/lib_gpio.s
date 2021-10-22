@@ -1,5 +1,6 @@
 .syntax unified
 .cpu cortex-m3
+.thumb
 
 .word 0x20000400
 .word 0x080000ed
@@ -39,7 +40,7 @@ ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
 loop:
 SUB	R0,	r0, #1
 CMP	R0, #0
-ADDGE	r1,	r1,	#256
+@ ADDGE	r1,	r1,	#256
 BGE		loop
 ldr r0, [r1]
 and r0, #0xfffffff0
