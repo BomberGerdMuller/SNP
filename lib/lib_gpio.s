@@ -45,7 +45,8 @@ ADDGT R0, R0, #0x4
 SUBGT R2,R2, #0x08
 MOV R2,R2,LSL #2
 LDR R1, [R0]
-and r1, r1 #0xfffffff0, ROL R2
+SUB R2, #32, R2
+and r1, r1 #0xfffffff0, ROR R2
 POP {R3}
 CMP R3, #0
 MOV R6, #0b0100
@@ -84,7 +85,7 @@ POP {R4}
 MOV R5, #1
 MOV R6, R5, LSL R2
 cmp R4, #0
-ITT EQ
+IT EQ
 MOVEQ R4, R4, LSL #16
 ORR R1, R1, R4
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
