@@ -6,6 +6,6 @@ _start:
 	BL gpio_set
 	@BP
 
-
-end_loop:
-	b	end_loop
+_exit:
+	MOV r7, #0x1
+	SWI 0x0
