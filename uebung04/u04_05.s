@@ -9,3 +9,4 @@ _start:
 _exit:
 	MOV r7, #0x1
 	SWI 0x0
+	
