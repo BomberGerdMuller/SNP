@@ -85,14 +85,13 @@ loop:
 	ADDNE R1, R1, #0x400
 	SUBNE R0, R0, #1
 	BNE loop
-	POP {PC}
 ADD R0, R1, R0
 POP {PC}
 
 gpio_set:
 PUSH {LR}
-@ BL get_point_register
-ldr r0, =0x40010800
+BL get_point_register
+@ ldr r0, =0x40010800
 ADD R0, R0, 0x10
 LDR R1, [R0]
 POP {R4}
