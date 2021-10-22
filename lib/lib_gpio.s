@@ -20,9 +20,9 @@ port_open:
 PUSH	{LR}
 ldr r1, =0x40021018		@ 0x40021018 Adresse APB2ENR
 ldr r2, [r1]
-orr r2, r2, #0b100			@ 04 Wert um Port A zu aktivieren	
-LSR	R0, R2, R0
-str r0, [r1]			@ Set IOPAEN bit in RCC_APB2ENR to 1 to enable GPIO
+MOV R3, #0b100, LSL R0
+orr r2, r2, R3			@ 04 Wert um Port A zu aktivieren
+str r2, [r1]			@ Set IOPAEN bit in RCC_APB2ENR to 1 to enable GPIO
 POP {PC}
 
 /*
