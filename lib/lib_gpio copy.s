@@ -38,12 +38,12 @@ PUSH {LR}
 @ PUSH {R2}
 @ PUSH {R1}
 ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
-@ loop:
-@ SUB	R0,	r0, #1
-@ CMP	R0, #0
-@ IT GE
-@ ADDGE	r1,	r1,	#128
-@ BGE		loop
+loop:
+SUB	R0,	r0, #1
+CMP	R0, #0
+IT GE
+ADDGE	r1,	r1,	#128
+BGE		loop
 ldr r0, [r1]
 and r0, #0xfffffff0
 orr r0, #0b0010			@ CNF:MODE Bits für PA8 als Ausgang Push_Pull
