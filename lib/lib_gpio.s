@@ -46,8 +46,8 @@ SUBGT R2,R2, #0x08
 MOV R2,R2,LSL #2
 LDR R1, [R0]
 MOV R6, #32
-SUB R2, R6, R2
-and r1, r1, #0xfffffff0, ROR R2
+SUB R6, R6, R2, R1, [R0]
+and r1, r1, #0xfffffff0, ROR R6
 POP {R3}
 CMP R3, #0
 MOV R6, #0b0100
