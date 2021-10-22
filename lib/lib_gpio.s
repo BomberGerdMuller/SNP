@@ -42,7 +42,8 @@ gpio_init:
 PUSH {LR}
 PUSH {R2}
 PUSH {R1}
-BL get_point_register
+@ BL get_point_register
+MOV R0, #0x40010804
 POP {R2}
 CMP R2, #0x7
 ITT GT
