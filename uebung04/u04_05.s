@@ -7,7 +7,5 @@ _start:
 	@BP
 
 
-_exit:
-	MOV R7, #0x1
-	SWI 0x0
-	
+end_loop:
+	b	end_loop
