@@ -1,6 +1,6 @@
 .syntax unified
 .cpu cortex-m3
-.arm
+.thumb
 
 .word 0x20000400
 .word 0x080000ed
@@ -40,6 +40,7 @@ PUSH {R1}
 BL get_point_register
 POP {R2}
 CMP R2, #0x7
+ITT GT
 ADDGT R0, R0, #0x4
 SUBGT R2,R2, #0x08
 MOV R2,R2,LSL #2
@@ -47,11 +48,13 @@ LDR R1, [R0]
 and r1, r1 #0xfffffff0, ROL R2
 POP {R3}
 CMP R3, #0
+IT EQ
 MOV R6, #0b0100
 MOV R6, R6, LSL R2
 ORREQ R1, R1, R6
 MOV R6, #0b0010
 MOV R6, R6, LSL R2
+IT GT
 ORRGT R1, R1, R6
 str r1, [R0]
 POP {PC}
@@ -64,6 +67,7 @@ MOV R1, 0x400
 LDR R1, =0x40010800		@ 0x40010800 Adresse Port A CRH
 loop:
 	CMP R0, #0
+	ITTT NE
 	ADDNE R1, R1, #0x400
 	SUBNE R0, R0, #1
 	BNE loop
@@ -80,6 +84,7 @@ POP {R4}
 MOV R5, #1
 MOV R6, R5, LSL R2
 cmp R4, #0
+ITT EQ
 MOVEQ R4, R4, LSL #16
 ORR R1, R1, R4
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
