@@ -91,7 +91,8 @@ POP {PC}
 
 gpio_set:
 PUSH {LR}
-/*BL get_point_register
+@ BL get_point_register
+ldr r0, =0x40010800
 ADD R0, R0, 0x10
 LDR R1, [R0]
 POP {R4}
@@ -104,13 +105,13 @@ ORR R1, R1, R4
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
 @ MOV r2, #16
 @LSR r0, r0, #16
-str r1, [r0]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high*/
-ldr r1, =0x40010810		@ ZZZZZZZZ Adresse BSRR Port A
+str r1, [r0]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high
+/*ldr r1, =0x40010810		@ ZZZZZZZZ Adresse BSRR Port A
 MOV r2, #1
 MOv R0, r2, LSL #8
 @ldr r0, =0b100000000 			@ ZZ Wert um PA8 high zu setzen
 @ MOV r2, #16
 @LSR r0, r0, #16
-str r0, [r1]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high
+str r0, [r1]			@ Set BS8 in GPIOA_BSRR to 1 to set PA8 high*/
 
 POP {PC}
