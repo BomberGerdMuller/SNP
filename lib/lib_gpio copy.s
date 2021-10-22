@@ -35,12 +35,12 @@ Input:	R0 -> Port (A=0 ... G=7)
  */
 gpio_init:
 PUSH {LR}
-@ PUSH {R2}
-@ PUSH {R1}
+PUSH {R2}
+PUSH {R1}
 ldr r1, =0x40010804		@ 0x40010800 Adresse Port A CRH
-loop:
-SUB	R0,	r0, #1
-CMP	R0, #0
+@ loop:
+@ SUB	R0,	r0, #1
+@ CMP	R0, #0
 IT GE
 ADDGE	r1,	r1,	#128
 BGE		loop
@@ -48,6 +48,16 @@ ldr r0, [r1]
 and r0, #0xfffffff0
 orr r0, #0b0010			@ CNF:MODE Bits für PA8 als Ausgang Push_Pull
 str r0, [r1]			@ Set CNF8:MODE8 in GPIOA_CRH
+POP {PC}
+
+
+get_point_register:
+PUSH {LR}
+MOV R1, 0x400
+LDR R1, =0x40010800		@ 0x40010800 Adresse Port A CRH
+loop:
+CMP R0, #0
+ADD
 POP {PC}
 
 gpio_set:
