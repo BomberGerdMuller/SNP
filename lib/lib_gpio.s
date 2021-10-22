@@ -48,7 +48,7 @@ and r1, r1 #0xfffffff0, ROL R2
 POP {R3}
 CMP R3, #0
 MOV R6, #0b0100
-ORRET R1, R1, R6, LSL R2
+ORREQ R1, R1, R6, LSL R2
 MOV R6, #0b0010
 ORRGT R1, R1, R6, LSL R2
 str r1, [R0]
