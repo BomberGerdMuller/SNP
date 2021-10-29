@@ -9,15 +9,15 @@
 
 .global _start
 _start:
-	MOV R0, #0x0
+	MOV R0, #0x1
 	BL port_open
-	MOV R0, #0x0
-	MOV R1, #8
-	MOV R2, #0
+	MOV R0, #0x1
+	MOV R1, #5
+	MOV R2, #1
 	BL gpio_init
-	MOV R0, #0x0
-	MOV R1, #8
-	MOV R2, #0
+	MOV R0, #0x1
+	MOV R1, #5
+	MOV R2, #1
 	BL gpio_set
 	@BP
 
