@@ -1,8 +1,8 @@
-/**********************************************************************/
-/*	library: lib_gpio.s																								       */
-/*	description:	Let you control Port A-G on the Nucleo Board							*/
-/*	depends on:	-																													*/
-/**********************************************************************/
+/********************************************************************/
+/*	library: lib_gpio.s												*/												       */
+/*	description:	Let you control Port A-G on the Nucleo Board	*/
+/*	depends on:	-													*/																*/
+/********************************************************************/
 
 	.syntax unified
 	.cpu cortex-m3
