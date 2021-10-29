@@ -31,17 +31,17 @@ _start:
 
 	MOV R0, #0x0
 	MOV R1, #8
-	MOV R2, #0
+	MOV R2, #1
 	BL gpio_set
 
 	MOV R0, #0x0
 	MOV R1, #10
-	MOV R2, #0
+	MOV R2, #1
 	BL gpio_set
 
 	MOV R0, #0x0
 	MOV R1, #5
-	MOV R2, #0
+	MOV R2, #1
 	BL gpio_set
 
 loop:
