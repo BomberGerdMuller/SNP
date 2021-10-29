@@ -3,9 +3,6 @@
 /*	description:	Let you control Port A-G on the Nucleo Board	*/
 /*	depends on:	-													*/																*/
 /********************************************************************/
-
-
-
 	.syntax unified
 	.cpu cortex-m3
 	.thumb
