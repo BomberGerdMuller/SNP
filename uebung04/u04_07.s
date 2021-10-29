@@ -39,6 +39,7 @@ _start:
 	MOV R2, #1
 	BL gpio_set
 
+
 	MOV R0, #0x0
 	MOV R1, #5
 	MOV R2, #1
