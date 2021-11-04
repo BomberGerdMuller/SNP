@@ -1,4 +1,4 @@
-abgabe: u04_04.elf led_d7_an led_d7_aus u04_05.elf led_d2_d7_d13_an led_d2_d7_d13_aus wait_10s.s u04_09.elf
+abgabe: u04_04.elf led_d7_an.elf led_d7_aus.elf u04_05.elf led_d2_d7_d13_an.elf led_d2_d7_d13_aus.elf wait_10s.elf u04_09.elf
 
 
 u04_04.elf: u04_04.s
