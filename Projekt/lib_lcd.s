@@ -34,14 +34,14 @@ lcd_enable:
      BL delay_5us
      BL delay_5us
      BL delay_5us
-     MOV R0, #1
-     BL delay_s
+     @ MOV R0, #1
+     @ BL delay_s
      MOV R0, #0x01
      MOV R1, #8
      MOV R2, #0
      BL gpio_set
-     MOV R0, #1
-     BL delay_s
+     @ MOV R0, #1
+     @ BL delay_s
      POP  {PC}
      
 /* function lcd_write: turn RS (PB9) on to initiate write-mode */	
@@ -171,7 +171,7 @@ lcd_send_4bit:
      MOV R1, #10
      BL gpio_set
      MOV R0, #1
-     BL delay_s
+     @ BL delay_s
      BL lcd_enable
      POP  {PC}
 
