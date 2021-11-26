@@ -136,14 +136,7 @@ lcd_send_4bit:
      MOV R2, 0b1
      AND R2, R4
      MOV R0, 0x1
-     MOV R1, #10
-     BL gpio_set
-
-     MOV R2, 0b1
-     LSR R4, R4, #1
-     AND R2, R4
-     MOV R0, 0x1
-     MOV R1, #11
+     MOV R1, #6
      BL gpio_set
 
      MOV R2, 0b1
@@ -157,7 +150,14 @@ lcd_send_4bit:
      LSR R4, R4, #1
      AND R2, R4
      MOV R0, 0x1
-     MOV R1, #6
+     MOV R1, #11
+     BL gpio_set
+
+     MOV R2, 0b1
+     LSR R4, R4, #1
+     AND R2, R4
+     MOV R0, 0x1
+     MOV R1, #10
      BL gpio_set
      BL lcd_enable
      POP  {PC}
