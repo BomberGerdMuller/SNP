@@ -159,7 +159,7 @@ lcd_send_4bit:
      MOV R2, 0b0001
      AND R5, R4
      MOV R0, 0x1
-     MOV R1 #6
+     MOV R1, #6
      BL gpio_set
      BL lcd_enable
      POP  {PC}
