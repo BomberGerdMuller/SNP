@@ -16,8 +16,8 @@
 .global Reset_Handler
 Reset_Handler:
 	
-	bl StartSysTick
-	bl lcd_init
+	@ bl StartSysTick
+	@ bl lcd_init
 	
 	loop:
 		b	loop

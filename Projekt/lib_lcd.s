@@ -102,10 +102,7 @@ lcd_reset:
 
      POP  {PC}
 
-     #Data 4 -> D10 = PB6
-     #Data 5 -> D4 = PB5
-     #Data 6 -> PB 11
-     #Data 7 -> D6 = PB 10
+
 lcd_send_4bit_8:
      PUSH {LR}
 
@@ -114,10 +111,8 @@ lcd_send_4bit_8:
 lcd_send_4bit:
      PUSH {LR}
      MOV R4, R0
-     # Open Port B
      MOV R0, #0x1
      BL port_open
-     #Init  PB6 
      MOV R0, #0x1
      MOV R1, #6
      MOV R2, #1
