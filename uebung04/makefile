@@ -11,7 +11,7 @@ led_d7_aus.elf:
 	as -g -o u04_05.o u04_05.s;ld -g -o led_d7_aus.elf u04_05.o -T ../lib/stm32f1.ld
 
 led_d2_d7_d13_an.elf:
-	as -g -o u04_07.o u04_07.s;ld -g -o led_d2_d7_d13_an.elf u04_07.o ../lib/lib_gpio.o -T ../lib/stm32f1.ld
+	as -g -o u04_07.o u04_07.s;ld -g -o led_d2_d7_d13_an.elf u04_07.o ../lib/lib_gpio.o -T ../lib/stm32f1.l
 
 led_d2_d7_d13_aus.elf: ../lib/lib_gpio.o
 	as -g -o u04_07.o u04_07.s;ld -g -o led_d2_d7_d13_aus.elf u04_07.o ../lib/lib_gpio.o -T ../lib/stm32f1.ld
