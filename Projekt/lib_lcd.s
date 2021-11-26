@@ -89,25 +89,25 @@ lcd_send_4bit_8:
      MOV R2, 0b1000
      AND R5, R4
      MOV R0, 0x1
-     MOV R1 #6
+     MOV R1, #6
      BL gpio_set
 
      MOV R2, 0b0100
      AND R5, R4
      MOV R0, 0x1
-     MOV R1 #5
+     MOV R1, #5
      BL gpio_set
 
      MOV R2, 0b0010
      AND R5, R4
      MOV R0, 0x1
-     MOV R1 #11
+     MOV R1, #11
      BL gpio_set
 
      MOV R2, 0b0001
      AND R5, R4
      MOV R0, 0x1
-     MOV R1 #10
+     MOV R1, #10
      BL gpio_set
      POP  {PC}
 
