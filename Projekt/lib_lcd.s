@@ -69,7 +69,7 @@ lcd_init:
 
      MOV R0, #0b0010
      BL lcd_send_4bit
-     MOV R0, #0b1100
+     MOV R0, #0b1000
      BL lcd_send_4bit
      
      MOV R0, #0b0000
