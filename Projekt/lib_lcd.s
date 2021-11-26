@@ -9,17 +9,27 @@
      .global lcd_enable
      .global lcd_write
      .global lcd_command
-     
-lcd_send_4bit:
-     PUSH {LR}
-     
-     
-     POP {PC}
 
 /* function lcd_enable: toggle enable-pin (PB8) to initiate write-data-event */	
-    lcd_enable:
+lcd_enable:
      PUSH {LR}
-     
+     MOV R0, #0x01
+     BL port_open
+     MOV R0, #0x01
+     MOV R1, #8
+     MOV R2, #1
+     BL gpio_init
+     MOV R0, #0x01
+     MOV R1, #8
+     MOV R2, #1
+     BL gpio_set
+
+     MOV R0, #1
+     BL delay_ms
+     MOV R0, #0x01
+     MOV R1, #8
+     MOV R2, #0
+     BL gpio_set
      
      POP  {PC}
      
@@ -39,7 +49,44 @@ lcd_command:
 
 lcd_init:
      PUSH {LR}
+     MOV R0, #50
+     BL delay_ms
+     MOV R0, #0b0011
+     BL lcd_send_4bit
+     MOV R0, #5
+     BL delay_ms 
+     MOV R0, #0b0011
+     BL lcd_send_4bit
      
+     MOV  R0, #0b0001
+     BL delay_ms
+
+     MOV R0, #0b0011
+     BL lcd_send_4bit
+
+     MOV R0, #0b0010
+     BL lcd_send_4bit
+
+     MOV R0, #0b0010
+     BL lcd_send_4bit
+     MOV R0, #0b0000
+     BL lcd_send_4bit
+     
+     MOV R0, #0b0000
+     BL lcd_send_4bit
+     MOV R0, #0b1000
+     BL lcd_send_4bit     
+     
+     MOV R0, #0b0000
+     BL lcd_send_4bit
+     MOV R0, #0b0001
+     BL lcd_send_4bit  
+
+     MOV R0, #0b0000
+     BL lcd_send_4bit
+     MOV R0, #0b0100
+     BL lcd_send_4bit       
+
      POP {PC}
 
 
@@ -60,6 +107,11 @@ lcd_reset:
      #Data 6 -> PB 11
      #Data 7 -> D6 = PB 10
 lcd_send_4bit_8:
+     PUSH {LR}
+
+     POP  {PC}
+
+lcd_send_4bit:
      PUSH {LR}
      MOV R4, R0
      # Open Port B
@@ -89,28 +141,28 @@ lcd_send_4bit_8:
      MOV R2, 0b1000
      AND R5, R4
      MOV R0, 0x1
-     MOV R1, #6
+     MOV R1, #10
      BL gpio_set
 
      MOV R2, 0b0100
      AND R5, R4
      MOV R0, 0x1
-     MOV R1, #5
+     MOV R1, #11
      BL gpio_set
 
      MOV R2, 0b0010
      AND R5, R4
      MOV R0, 0x1
-     MOV R1, #11
+     MOV R1, #5
      BL gpio_set
 
      MOV R2, 0b0001
      AND R5, R4
      MOV R0, 0x1
-     MOV R1, #10
+     MOV R1 #6
      BL gpio_set
+     BL lcd_enable
      POP  {PC}
-
 
 .type EnableLCDClockGPIOB, %function
 EnableLCDClockGPIOB:
