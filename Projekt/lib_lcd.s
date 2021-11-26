@@ -29,7 +29,8 @@ lcd_enable:
      MOV R1, #8
      MOV R2, #0
      BL gpio_set
-     
+          MOV R0, #2
+     BL delay_s
      POP  {PC}
      
 /* function lcd_write: turn RS (PB9) on to initiate write-mode */	
