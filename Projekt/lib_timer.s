@@ -23,7 +23,8 @@ SysTick_Handler_Exit:
 .global delay_s
 delay_s:
 	push {lr}
-	MUL R0, #1000
+	MOV R4, #1000
+	MUL R0, R0, R4
 	BL delay_ms
 	pop {lr}
 	mov pc, lr
@@ -31,7 +32,7 @@ delay_s:
 .type delay_ms, %function
 .global delay_ms
 delay_ms:
-	push {lr}	
+	push {lr}
 	MOV R10, #200
 	MUL R10, R0, R10
 	BL delay_5us
