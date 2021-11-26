@@ -1,5 +1,5 @@
 hello.elf: hello.o lib_lcd.o lib_timer.o lib_gpio.o
-	ld -g -o hello.elf hello.o -T stm32f1.ld
+	ld -g -o hello.elf lib_lcd.o lib_timer.o lib_gpio.o hello.o -T stm32f1.ld
 
 hello.o: hello.s
 	as -g -o hello.o hello.s
