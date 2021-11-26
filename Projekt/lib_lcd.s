@@ -24,8 +24,17 @@ lcd_enable:
      MOV R2, #1
      BL gpio_set
 
-     MOV R0, #1
-     BL delay_ms
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
+     BL delay_5us
      MOV R0, #0x01
      MOV R1, #8
      MOV R2, #0
