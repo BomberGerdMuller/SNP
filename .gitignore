@@ -2,5 +2,6 @@
 !/**/
 !*.*
 *.o
+*.elf
+test/*
 !makefile
-
